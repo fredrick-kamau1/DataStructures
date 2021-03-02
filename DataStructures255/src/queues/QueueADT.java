@@ -10,8 +10,6 @@ public interface QueueADT<T> {
   
   public boolean isEmpty();
   
-  public int length();
-  
-  public String toString();
-  
+  public int size();
+    
 }

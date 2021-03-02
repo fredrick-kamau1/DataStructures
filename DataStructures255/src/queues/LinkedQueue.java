@@ -31,7 +31,7 @@ public class LinkedQueue<T> implements QueueADT<T> {
 
   @Override
   public T dequeue() {
-    // TODO Auto-generated method stub
+    
 
     return null;
   }
@@ -53,7 +53,7 @@ public class LinkedQueue<T> implements QueueADT<T> {
   }
 
   @Override
-  public int length() {
+  public int size() {
     // TODO Auto-generated method stub
     return 0;
   }

@@ -55,12 +55,14 @@ public class ArrayStack<E> implements StackADT<E> {
       growStack();
     // no changes after this
     stackArray[top++] = element;
+    size++;
   }
 
   // Remove and return top element
   public E pop() {
     if (top == 0)
       return null;
+    size--;
     return stackArray[--top];
   }
 
@@ -81,6 +83,7 @@ public class ArrayStack<E> implements StackADT<E> {
   // check if the stack is full.
   public boolean isFull() {
     return (top >= maxSize) ? true : false;
+   
 
     /*
      * Complexity of this method is O(1) since in the worst case scenario there
@@ -127,13 +130,12 @@ public class ArrayStack<E> implements StackADT<E> {
   }
 
   public int search(E element) {
-    int count = 1;
+    int count = 1;    
     for (int i = 0; i < stackArray.length; i++) {
-      if (stackArray[i] == element) 
-        break;
-       count++;
-    }
-    return count;
+      if (stackArray[i] == element)   
+        return i;
+          }
+    return -1;
   }
 
   public void toArray(E[] anArray) {
@@ -143,7 +145,6 @@ public class ArrayStack<E> implements StackADT<E> {
     } else {
       for (int i = 0; i < anArray.length; i++) {
         anArray[i] = stackArray[i];
-
       }
     }
     System.out.println(Arrays.toString(anArray));

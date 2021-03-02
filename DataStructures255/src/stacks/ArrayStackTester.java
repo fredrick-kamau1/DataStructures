@@ -102,6 +102,6 @@ public class ArrayStackTester {
      */
     
     System.out.println(myStack.contains(8));
-    System.out.println(myStack.search(7));
+    System.out.println(myStack.search(3));
   }
 }
