@@ -1,6 +1,9 @@
 package stacks;
 
+import java.util.*;
 import java.util.Arrays;
+
+
 
 import exceptions.ArrayCapacityException;
 import support.LNode;
@@ -102,8 +105,8 @@ public class ArrayStack<E> implements StackADT<E> {
 
   @SuppressWarnings("unchecked")
   public void growStack() {
-    size = stackArray.length + DEFAULT_SIZE;
-    E[] newStack = (E[]) new Object[size];
+    int growSize = size + DEFAULT_SIZE;
+    E[] newStack = (E[]) new Object[growSize];
     for (int i = 0; i < stackArray.length; i++) {
       newStack[i] = stackArray[i];
     }
@@ -130,11 +133,13 @@ public class ArrayStack<E> implements StackADT<E> {
   }
 
   public int search(E element) {
-    int count = 1;    
-    for (int i = 0; i < stackArray.length; i++) {
+    
+    for (int i = 0; i < size ; i++) {  
+      System.out.println("This is " + toString());
       if (stackArray[i] == element)   
-        return i;
-          }
+        return i+1;
+      
+      }    
     return -1;
   }
 
@@ -148,5 +153,17 @@ public class ArrayStack<E> implements StackADT<E> {
       }
     }
     System.out.println(Arrays.toString(anArray));
+  }
+  
+  public String toString() {
+    String retString = "[";
+    
+
+    for (int c = 0; c < size; c++) {
+      retString += stackArray[c];
+      retString += " ";
+    }
+    retString += "]";
+    return retString;
   }
 }// end class

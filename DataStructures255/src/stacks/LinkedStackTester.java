@@ -25,6 +25,7 @@ public class LinkedStackTester {
     myStack.push(50);
     System.out.println(myStack.peek());
     System.out.println();
+    myStack.push(60);
     
     //Test contains method    
     System.out.println(myStack.contains(10));

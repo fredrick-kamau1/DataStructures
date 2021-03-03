@@ -21,7 +21,7 @@ public class LinkedStack<T> implements StackADT<T> {
     LNode<T> newNode = new LNode<T>(element);
     newNode.setNext(topNode);
     topNode = newNode;
-    // length++;
+    //length++;
   }
 
   @Override
