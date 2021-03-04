@@ -101,8 +101,10 @@ public class ArrayStackTester {
      * insert n elements will be O(n)
      */
     
-    System.out.println(myStack.contains(8));
-    System.out.println(myStack.search(4));
+    System.out.println("\nDoes stack contain [8]: " + myStack.contains(8));
+    System.out.println("Does stack contain [4]: " + myStack.contains(4) + "\n");
+    System.out.println("Current stack: " + myStack.toString());
+    System.out.println("\nElement on top [5] index 1: " + myStack.search(5));
     System.out.println();
   }
 }

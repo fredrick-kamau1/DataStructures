@@ -128,9 +128,10 @@ public class ArrayQueue<T> implements QueueADT<T> {
   public int indexOf(T element) {
     int index = front;
     for (int i = 0; i < size; i++) {
-      index = (index + 1) % queueArray.length;
-      if (queueArray[index] == element)
+      
+      if (queueArray[index].equals(element))        
         return index;
+      index = (index + 1) % queueArray.length;      
     }
     return -1;
   }
@@ -145,9 +146,9 @@ public class ArrayQueue<T> implements QueueADT<T> {
       throw new ArrayCapacityException("Stack");
     } else {
       int index = front;
-      for (int i = 0; i < size; i++) {
-        index = (index + 1) % queueArray.length;
+      for (int i = 0; i < size; i++) {        
         anArray[i] = queueArray[index];
+        index = (index + 1) % queueArray.length;
       }
     }
     System.out.println(Arrays.toString(anArray));

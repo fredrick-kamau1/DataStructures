@@ -1,13 +1,12 @@
 package queues;
 
 import exceptions.ArrayCapacityException;
-import stacks.LinkedStack;
 
 public class QueueTester {
 
   public static void main(String[] args) {
-    // LinkedQueue<Integer> lq = new LinkedQueue<Integer>();
-    ArrayQueue<Integer> lq = new ArrayQueue<Integer>();
+    LinkedQueue<Integer> lq = new LinkedQueue<Integer>();
+    //ArrayQueue<Integer> lq = new ArrayQueue<Integer>();
 
     // Enque first three elements as initial size of array
     lq.enqueue(4);
@@ -73,7 +72,7 @@ public class QueueTester {
    * tryToArray function with try/catch block to catch NullPointer and
    * ArrayCapacity exceptions
    */
-  public static void tryToArray(ArrayQueue<Integer> T, Integer[] anArray) {
+  public static void tryToArray(QueueADT<Integer> T, Integer[] anArray) {
 
     try {
       T.toArray(anArray);

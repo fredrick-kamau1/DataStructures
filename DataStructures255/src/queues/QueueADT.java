@@ -11,5 +11,7 @@ public interface QueueADT<T> {
   public boolean isEmpty();
   
   public int size();
+
+  public void toArray(T[] anArray);
     
 }

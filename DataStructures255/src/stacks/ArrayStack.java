@@ -1,12 +1,12 @@
 package stacks;
 
-import java.util.*;
+
 import java.util.Arrays;
 
 
 
 import exceptions.ArrayCapacityException;
-import support.LNode;
+
 
 public class ArrayStack<E> implements StackADT<E> {
 
@@ -125,7 +125,7 @@ public class ArrayStack<E> implements StackADT<E> {
   }
 
   public boolean contains(E element) {
-    for (int i = 0; i < stackArray.length; i++) {
+    for (int i = 0; i < size; i++) {
       if (stackArray[i] == element)
         return true;
     }
@@ -134,12 +134,10 @@ public class ArrayStack<E> implements StackADT<E> {
 
   public int search(E element) {
     
-    for (int i = 0; i < size ; i++) {  
-      System.out.println("This is " + toString());
-      if (stackArray[i] == element)   
-        return i+1;
-      
-      }    
+    for (int i = 0; i < size ; i++) {        
+      if (stackArray[i].equals(element))   
+        return i+1;      
+      }      
     return -1;
   }
 
