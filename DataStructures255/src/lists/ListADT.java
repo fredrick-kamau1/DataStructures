@@ -1,22 +1,22 @@
-package lists;
+  package lists;
 
 import java.util.NoSuchElementException;
 
-public interface ListADT<T> {
+public interface ListADT<T> extends Iterable<T>{
 
  // Remove all contents from the list, so it is once again empty
  public void clear();
 
  // Insert "it" at the current location
  // The client must ensure that the list's capacity is not exceeded
- public boolean insert(T it);
+ public boolean addAtCurrent(T it);
 
  // Append "it" at the end of the list
  // The client must ensure that the list's capacity is not exceeded
- public boolean append(T it);
+ public boolean add(T it);
 
  // Remove and return the current element
- public T remove() throws NoSuchElementException;
+ public T removeCurrent() throws NoSuchElementException;
 
  // Set the current position to the start of the list
  public void moveToStart();
@@ -43,7 +43,7 @@ public interface ListADT<T> {
  public boolean isAtEnd();
 
  // Return the current element
- public T getValue() throws NoSuchElementException;
+ public T getCurrentValue() throws NoSuchElementException;
  
  // Tell if the list is empty or not
  public boolean isEmpty();
