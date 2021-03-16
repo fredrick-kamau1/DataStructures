@@ -18,9 +18,10 @@ public class ArrayListTester {
     list.removeLast(90); 
     list.addAfter(12, 13);
     list.addAt(4, 15);
-    list.clear();   
+    //list.clear();   
     list.add(40);
     list.addToFront(50);
+    list.remove(89);
     
     //System.out.println(list.first());
     System.out.println(list.contains(89));

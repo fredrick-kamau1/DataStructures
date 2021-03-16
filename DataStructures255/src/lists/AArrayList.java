@@ -66,20 +66,23 @@ public abstract class AArrayList<T> implements ListADT<T> {
     T retElement = null;
     int index = 0;
     if (isEmpty()) {
-      throw new EmptyCollectionException("List");
+      throw new EmptyCollectionException("list");
     }
-    
-    //identify index
+    if (!contains(element)) {
+      throw new NoSuchElementException();
+    }
+
+    // identify index
     for (int i = 0; i < listSize; ++i) {
       if (listArray[i].equals(element)) {
         index = i;
       }
     }
-    
-    //shift elements 
-    for (int i = index; i < listSize-1; ++i) {
+
+    // shift elements
+    for (int i = index; i < listSize - 1; ++i) {
       listArray[i] = listArray[i + 1];
-      
+
     }
 
     listArray[listSize] = null;
@@ -120,14 +123,14 @@ public abstract class AArrayList<T> implements ListADT<T> {
     T retElement;
     if (isEmpty())
       throw new EmptyCollectionException("list");
-    
-    if(!listArray[listSize-1].equals(element))
-      throw new NoSuchElementException(); 
 
-    retElement = listArray[listSize-1];    
-    listSize--; 
+    if (!listArray[listSize - 1].equals(element))
+      throw new NoSuchElementException();
+
+    retElement = listArray[listSize - 1];
+    listSize--;
     modifiedCount++;
-    return retElement;    
+    return retElement;
   }
 
   @Override
@@ -165,17 +168,17 @@ public abstract class AArrayList<T> implements ListADT<T> {
     }
     for (int i = 0; i < listSize; ++i) {
       if (listArray[i].equals(element)) {
-        return true; 
+        return true;
       }
     }
     return false;
   }
 
   @Override
-  public int indexOf(T element) {    
-    for(int i = 0; i < listSize; ++i) {
-      if(listArray[i].equals(element)) {
-        return i; 
+  public int indexOf(T element) {
+    for (int i = 0; i < listSize; ++i) {
+      if (listArray[i].equals(element)) {
+        return i;
       }
     }
     return -1;
@@ -183,12 +186,12 @@ public abstract class AArrayList<T> implements ListADT<T> {
 
   @Override
   public void toArray(T[] anArray) {
-    if(listSize > anArray.length) {
+    if (listSize > anArray.length) {
       throw new ArrayCapacityException("list");
     } else {
-      //int index = FRONT; 
-      for(int i = 0; i < listSize; ++i) {
-        anArray[i] = listArray[i]; 
+      // int index = FRONT;
+      for (int i = 0; i < listSize; ++i) {
+        anArray[i] = listArray[i];
       }
       System.out.print(Arrays.toString(anArray));
     }
