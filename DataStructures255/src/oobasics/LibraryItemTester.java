@@ -51,5 +51,8 @@ public class LibraryItemTester {
     video1.getServiceApp();
     System.out.println();
     System.out.println(video1.checkOut());
+    System.out.println();
+    
+    System.out.println(book1.toString());
   }
 }

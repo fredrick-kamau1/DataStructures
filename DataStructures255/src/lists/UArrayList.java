@@ -17,7 +17,6 @@ public class UArrayList<T> extends AArrayList<T>
   public boolean add(T element) {
     if (isFull()) // list is full
       growList();
-
     listArray[listSize++] = element;
     modifiedCount++;
     return true;
@@ -41,11 +40,17 @@ public class UArrayList<T> extends AArrayList<T>
   @Override
   public void addAfter(T existingElement, T element)
       throws NoSuchElementException {
+    boolean isFound = false;
     int index = 0;
-    for (int i = 0; i < listSize; ++i) {
+    for (int i = 0; i < listSize && !isFound; ++i) {
       if (listArray[i].equals(existingElement)) {
         index = i + 1;
-      }
+        isFound = true; 
+      }      
+    }
+    
+    if(!isFound) {
+      throw new NoSuchElementException(); 
     }
     shiftElements(index);
     listArray[index] = element;

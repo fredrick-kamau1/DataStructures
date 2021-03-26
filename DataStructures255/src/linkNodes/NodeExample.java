@@ -10,6 +10,18 @@ public class NodeExample {
     //usingString();
     //usingPerson();
     
+    LNode<Integer> head = new LNode<Integer>();
+    LNode<Integer> shoulders = new LNode<Integer>();
+    
+    head.setData(20);
+    shoulders.setData(50);
+    head.setNext(shoulders);
+    shoulders.setNext(head);
+    System.out.println(head.getData() + shoulders.getData());
+    
+    
+    System.out.println();
+    
     String s1 = "Welcome ";
     String s2 = "to ";
     String s3 = "Kansas";

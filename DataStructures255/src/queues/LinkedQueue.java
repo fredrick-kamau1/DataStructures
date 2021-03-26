@@ -94,7 +94,9 @@ public class LinkedQueue<T> implements QueueADT<T> {
     LNode<T> newNode = front;
     if (size > anArray.length) {
       throw new ArrayCapacityException("queue");
-    } else {
+    }else if(size == 0) {
+      throw new NullPointerException();      
+    }else {
       for (int i = 0; i < size; i++) {
         anArray[i] = newNode.getData();
         newNode = newNode.getNext();

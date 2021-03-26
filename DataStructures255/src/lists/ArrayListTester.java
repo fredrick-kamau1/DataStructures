@@ -1,6 +1,5 @@
 package lists;
 
-
 import java.util.Iterator;
 
 public class ArrayListTester {
@@ -21,7 +20,8 @@ public class ArrayListTester {
     //list.clear();   
     list.add(40);
     list.addToFront(50);
-    list.remove(89);
+    list.remove(40);
+    
     
     //System.out.println(list.first());
     System.out.println(list.contains(89));

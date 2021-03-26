@@ -65,32 +65,30 @@ public abstract class AArrayList<T> implements ListADT<T> {
     // how you code it
     T retElement = null;
     int index = 0;
+    boolean isFound = false;
     if (isEmpty()) {
       throw new EmptyCollectionException("list");
     }
-    if (!contains(element)) {
-      throw new NoSuchElementException();
-    }
 
     // identify index
-    for (int i = 0; i < listSize; ++i) {
+    for (int i = 0; i < listSize && !isFound; ++i) {
       if (listArray[i].equals(element)) {
         index = i;
+        isFound = true;
       }
+    }
+    if (!isFound) {
+      throw new NoSuchElementException();
     }
 
     // shift elements
     for (int i = index; i < listSize - 1; ++i) {
       listArray[i] = listArray[i + 1];
-
     }
-
     listArray[listSize] = null;
     listSize--;
     modifiedCount++;
-
     return retElement;
-
   }
 
   @Override
@@ -261,6 +259,5 @@ public abstract class AArrayList<T> implements ListADT<T> {
         throw new NoSuchElementException();
       }
     }
-
   }
 }

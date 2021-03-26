@@ -8,20 +8,20 @@ import support.LNode;
 
 public class LinkedStack<T> implements StackADT<T> {
 
-  private int length; // keeps track of how many elements exist in te stack
-  LNode<T> topNode;
+  private int length; // keeps track of how many elements exist in the stack
+  private LNode<T> topNode;
 
   public LinkedStack() {
-    length = 0;
+    length = 1;
     topNode = null;
   }
 
   @Override
-  public void push(T element) {
+  public void push(T element) {    
     LNode<T> newNode = new LNode<T>(element);
     newNode.setNext(topNode);
     topNode = newNode;
-    //length++;
+    length++;
   }
 
   @Override
@@ -52,12 +52,13 @@ public class LinkedStack<T> implements StackADT<T> {
   public int length() {
     // Big difference in time complexity if we use a loop for length instead of
     // length++
+    int count = 1;
     LNode<T> top = topNode;
     while (top != null) {
       top = top.getNext();
-      length++;
+      count++;
     }
-    return length;
+    return count;
   }
 
   public boolean contains(T element) {
@@ -72,10 +73,10 @@ public class LinkedStack<T> implements StackADT<T> {
 
   // FIXME
   public int search(T element) {
-    int count = 1;
+    int count = 0;
     LNode<T> newNode = topNode;
     while (newNode != null) {
-      if (newNode.getData() == element)
+      if (newNode.getData().equals(element))
         break;
       newNode = newNode.getNext();
       count++;
@@ -95,5 +96,5 @@ public class LinkedStack<T> implements StackADT<T> {
     }
     System.out.println(Arrays.toString(anArray));
   }
-
+ 
 }// end Class

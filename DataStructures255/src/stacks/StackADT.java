@@ -14,4 +14,6 @@ public interface StackADT<T> {
   
   public String toString();
 
+  public void toArray(T[] anArray);
+
 }

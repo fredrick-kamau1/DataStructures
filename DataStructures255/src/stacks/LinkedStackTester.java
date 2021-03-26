@@ -23,9 +23,14 @@ public class LinkedStackTester {
     myStack.push(40);
     System.out.println(myStack.peek());
     myStack.push(50);
+    System.out.println(myStack.peek());    
+    myStack.push(60);
     System.out.println(myStack.peek());
     System.out.println();
-    myStack.push(60);
+    System.out.println(myStack.pop());
+    System.out.println(myStack.pop());
+    
+    
     
     //Test contains method    
     System.out.println(myStack.contains(10));
@@ -51,7 +56,7 @@ public class LinkedStackTester {
     tryToArray(myStack,myInt2);
     
     //Test array to print out stack 
-    Integer[] myInt3 = new Integer[5];
+    Integer[] myInt3 = new Integer[6];
     tryToArray(myStack,myInt3);
     
     
@@ -59,7 +64,7 @@ public class LinkedStackTester {
   
   /*tryToArray function with try/catch block to catch NullPointer and ArrayCapacity 
     exceptions*/
-  public static void tryToArray(LinkedStack<Integer> T, Integer[] anArray) {
+  public static void tryToArray(StackADT<Integer> T, Integer[] anArray) {
         
     try {
       T.toArray(anArray);
@@ -70,7 +75,7 @@ public class LinkedStackTester {
     }
   }
 
-  public static void tryPeek(LinkedStack<Integer> T) {
+  public static void tryPeek(StackADT<Integer> T) {
     try {
       System.out.println(T.peek());
     } catch (EmptyCollectionException e) {

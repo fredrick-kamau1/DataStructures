@@ -133,21 +133,24 @@ public class ArrayStack<E> implements StackADT<E> {
   }
 
   public int search(E element) {
-    
-    for (int i = 0; i < size ; i++) {        
-      if (stackArray[i].equals(element))   
-        return i+1;      
+    int index = top-1;     
+    for (int i = 0; i < size; i++) {        
+      if (stackArray[index].equals(element))   
+        return i; 
+      index--;
       }      
     return -1;
   }
 
   public void toArray(E[] anArray) {
 
-    if (maxSize > anArray.length) {
+    int index = top-1; 
+    if (size > anArray.length) {
       throw new ArrayCapacityException("Stack");
     } else {
-      for (int i = 0; i < anArray.length; i++) {
-        anArray[i] = stackArray[i];
+      for (int i = 0; i < size; i++) {
+        anArray[i] = stackArray[index];
+        index--;
       }
     }
     System.out.println(Arrays.toString(anArray));

@@ -66,7 +66,7 @@ public class QueueTester {
         .print("Test toArray function to print out all current elements ");
     tryToArray(lq, myInt3);
 
-  }
+  } 
 
   /*
    * tryToArray function with try/catch block to catch NullPointer and
@@ -81,7 +81,6 @@ public class QueueTester {
     } catch (ArrayCapacityException e) {
       System.out.println("Try catch to get ArrayCapacityException " + e);
     }
-
   }
 
 }

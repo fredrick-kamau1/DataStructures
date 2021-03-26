@@ -57,5 +57,11 @@ public class AnotherStack<T> implements StackADT<T> {
     return 0;
   }
 
+  @Override
+  public void toArray(T[] anArray) {
+    // TODO Auto-generated method stub
+    
+  }
+
 }
 
