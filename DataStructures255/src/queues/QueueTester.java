@@ -5,8 +5,8 @@ import exceptions.ArrayCapacityException;
 public class QueueTester {
 
   public static void main(String[] args) {
-    LinkedQueue<Integer> lq = new LinkedQueue<Integer>();
-    //ArrayQueue<Integer> lq = new ArrayQueue<Integer>();
+    //LinkedQueue<Integer> lq = new LinkedQueue<Integer>();
+    ArrayQueue<Integer> lq = new ArrayQueue<Integer>();
 
     // Enque first three elements as initial size of array
     lq.enqueue(4);

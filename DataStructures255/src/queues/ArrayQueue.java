@@ -113,9 +113,10 @@ public class ArrayQueue<T> implements QueueADT<T> {
   public boolean contains(T element) {
     int index = front;
     for (int i = 0; i < size; i++) {
-      index = (index + 1) % queueArray.length;
+      
       if (queueArray[index] == element)
         return true;
+      index = (index + 1) % queueArray.length;
     }
     return false;
   }
@@ -128,7 +129,7 @@ public class ArrayQueue<T> implements QueueADT<T> {
   public int indexOf(T element) {
     int index = front;
     for (int i = 0; i < size; i++) {
-      
+       
       if (queueArray[index].equals(element))        
         return index;
       index = (index + 1) % queueArray.length;      

@@ -31,15 +31,17 @@ public class ArrayStack<E> implements StackADT<E> {
   // Modify this method
   // so that it all elements are null
   public void clear() {
-    for (int i = 0; i < stackArray.length; i++) {
-      stackArray[i] = null;
+    //for (int i = 0; i < stackArray.length; i++) {
+      //stackArray[i] = null;
+      top = size = 0; 
+      
       /*
        * Time complexity before the change was constant time O(1) since top was
        * being assigned to 0/null. With this change however, time complexity
        * changes to O(n) since the loop has to iterate n number of times to
        * assign null to all elements
        */
-    }
+    //}
   } // Reinitialize stack
 
   // Push "element" onto stack

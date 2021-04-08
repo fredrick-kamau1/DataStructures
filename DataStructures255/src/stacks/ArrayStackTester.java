@@ -106,5 +106,8 @@ public class ArrayStackTester {
     System.out.println("Current stack: " + myStack.toString());
     System.out.println("\nElement on top [5] index 1: " + myStack.search(5));
     System.out.println();
+    myStack.clear();
+    System.out.println("Current stack: " + myStack.toString());
+    
   }
 }
