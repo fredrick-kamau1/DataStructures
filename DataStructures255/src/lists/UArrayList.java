@@ -45,12 +45,12 @@ public class UArrayList<T> extends AArrayList<T>
     for (int i = 0; i < listSize && !isFound; ++i) {
       if (listArray[i].equals(existingElement)) {
         index = i + 1;
-        isFound = true; 
-      }      
+        isFound = true;
+      }
     }
-    
-    if(!isFound) {
-      throw new NoSuchElementException(); 
+
+    if (!isFound) {
+      throw new NoSuchElementException();
     }
     shiftElements(index);
     listArray[index] = element;

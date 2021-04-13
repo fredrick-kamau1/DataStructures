@@ -191,7 +191,7 @@ public abstract class AArrayList<T> implements ListADT<T> {
       for (int i = 0; i < listSize; ++i) {
         anArray[i] = listArray[i];
       }
-      System.out.print(Arrays.toString(anArray));
+      System.out.println(Arrays.toString(anArray));
     }
 
   }
