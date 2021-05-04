@@ -1,15 +1,17 @@
 package trees;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-
+import lists.UArrayList;
 import support.BTNode;
 
 public class BSTree<T extends Comparable<T>> implements BinarySearchTreeADT<T> {
 
   BTNode<T> root;
-  //int size;
+  int size;
+  public int modifiedCount; 
 
 
   public BSTree() {
@@ -230,6 +232,12 @@ public class BSTree<T extends Comparable<T>> implements BinarySearchTreeADT<T> {
   public void toArray(T[] anArray) {
     // use a recursive approach to return an array of the elements
     // in an inorder traversal   
+    if(isEmpty())
+      throw new NullPointerException(); 
+    
+    if(anArray.length > size()) {
+      throw new ArrayIndexOutOfBoundsException();
+    }
    recToArray(root, anArray, 0);        
   }
 
@@ -242,6 +250,44 @@ public class BSTree<T extends Comparable<T>> implements BinarySearchTreeADT<T> {
     System.out.print(data + " ");
     recToArray(node.getRight(), anArray, index);     
   }
+  
+  public void balance() {
+    @SuppressWarnings("unchecked")
+    T[] anArray = (T[]) new Comparable[size()];
+    toArray(anArray);
+    clear();
+    int low = 0;
+    int high = anArray.length - 1;
+    buildTree(anArray, low, high);
+    
+     
+  }
+  private void buildTree(T[] anArray, int low, int high) {
+    int mid = 0;
+    if(low == high) {
+      add(anArray[low]);
+    } else if(low + 1 == high) {
+      add(anArray[low]);
+      add(anArray[high]); 
+    }else {
+      mid = (high + low) / 2;
+      add(anArray[mid]); 
+      
+      buildTree(anArray, low, mid -1);
+      buildTree(anArray, mid + 1, high);
+    }      
+  }
+
+  public int height() {     
+    return treeHeight(root);      
+  }
+
+  private int treeHeight(BTNode<T> node) {      
+    if (node == null)
+      return -1;       
+    return Math.max(treeHeight(node.getLeft()), treeHeight(node.getRight())) + 1;   
+  }
+  
   
   @Override
   public String toString() {
@@ -269,6 +315,65 @@ public class BSTree<T extends Comparable<T>> implements BinarySearchTreeADT<T> {
   @Override
   public Iterator<T> iterator() {
     // TODO Auto-generated method stub
-    return null;
+    return inOrderIterator();
+  }
+  
+  public Iterator<T> inOrderIterator() {
+    // TODO Auto-generated method stub
+
+    UArrayList<T> eList = new UArrayList<T>();
+    inOrder(root, eList);
+
+    return new TreeIterator(eList.iterator());
+
+  }
+
+  private void inOrder(BTNode<T> node, UArrayList<T> eList) {
+
+    if (node != null) {
+      inOrder(node.getLeft(), eList);
+      eList.add(node.getData());
+      inOrder(node.getRight(), eList);
+    }
+
+  }
+
+  private class TreeIterator implements Iterator<T> {
+
+    private Iterator<T> treeIterator;
+    private int currentModifiedCount;
+
+    public TreeIterator(Iterator<T> listIterator) {
+
+      treeIterator = listIterator;
+      currentModifiedCount = modifiedCount;
+    }
+
+    @Override
+    public boolean hasNext() throws ConcurrentModificationException {
+      // 
+
+      if (currentModifiedCount != modifiedCount)
+        throw new ConcurrentModificationException();
+
+      return (treeIterator.hasNext());
+
+    }
+
+    @Override
+    public T next() {
+      // 
+
+      if (hasNext()) 
+        return treeIterator.next();
+      else
+        throw new NoSuchElementException();
+    }
+
+  }
+  
+  protected T root() {
+    return root.getData();
+    
   }
 }

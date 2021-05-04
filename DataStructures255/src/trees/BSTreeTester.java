@@ -1,5 +1,7 @@
 package trees;
 
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class BSTreeTester {
@@ -13,6 +15,8 @@ public class BSTreeTester {
     removeMax(aTree);    
     testSize(aTree); 
     testIsEmpty(aTree); 
+    testInorderIterator(aTree);
+    testHeightandBalance(aTree);
     
     //Test toArray
     System.out.println
@@ -30,7 +34,7 @@ public class BSTreeTester {
     Integer[] aT3 = new Integer[aTree.size()]; 
     testToArray(aTree, aT3);
     
-    testOne(aTree);
+    //testOne(aTree);
   }
 
   public static void testMax(BSTree<Integer> aTree) {
@@ -177,5 +181,69 @@ public class BSTreeTester {
     System.out.println("Remove 20: " + aTree.remove(20));
     System.out.println(aTree);
     System.out.println("10 should be lc of 25");
+  }
+  
+  public static void testInorderIterator(BSTree<Integer> aTree) {
+
+    System.out.println("*****Test InOrder Iterator*****");
+    // start with an empty tree
+    aTree.clear();
+    aTree.add(50);
+    aTree.add(30);
+    aTree.add(40);
+    aTree.add(35);
+    aTree.add(40);
+    aTree.add(80);
+    aTree.add(85);
+    aTree.add(20);
+    aTree.add(25);
+    aTree.add(10);
+    System.out.println(aTree);
+
+    Iterator<Integer> it = aTree.iterator();
+
+    System.out.println("\nFirst: " + it.next());
+    System.out.println("Next: " + it.next());
+    aTree.add(60);
+    try {
+      System.out.println("Next: " + it.next());
+    } catch (ConcurrentModificationException e) {
+      System.out.println(e.getClass() + " has occurred.  The tree was modified.");
+    }
+
+    for (Integer value : aTree) 
+      System.out.print(value + " ");
+    System.out.println();
+
+  }
+  
+  public static void testHeightandBalance(BSTree<Integer> aTree) {
+    System.out.println();
+    aTree.clear();
+    aTree.add(10);
+    aTree.add(20);
+    aTree.add(30);
+    aTree.add(40);
+    aTree.add(50);
+    aTree.add(60);
+    aTree.add(70);
+    aTree.add(80);
+    aTree.add(90);
+    aTree.add(100);
+    aTree.add(110);
+    aTree.add(120);
+  
+    System.out.println("*****Testing height and balance*****");
+    for (Integer value : aTree) 
+      System.out.print(value + " ");
+    System.out.println("\nHeight before balance: " + aTree.height());
+    System.out.println("Size before balance: " + aTree.size());
+    System.out.println("Root before balance: " + aTree.root());
+  
+    aTree.balance();
+
+    System.out.println("\nHeight after balance: " + aTree.height());
+    System.out.println("Size after balance: " + aTree.size());
+    System.out.println("Root after balance: " + aTree.root());
   }
 }
